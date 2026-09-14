@@ -1,0 +1,355 @@
+/* ============================================================
+   Nakul Gupta — Digital Business Card
+   Redesigned: Editorial Luxury / Soft Structuralism
+   ============================================================ */
+
+:root{
+  --ink:#1c1a17;
+  --ink-soft:#6b655c;
+  --ink-faint:#9a938a;
+  --paper:#faf7f2;
+  --paper-deep:#f1ece3;
+  --card:#ffffff;
+  --accent:#e07a1f;      /* warm Joyfill orange, deepened */
+  --accent-soft:#f6e3c8;
+  --hairline:rgba(28,26,23,.08);
+  --radius-lg:2rem;
+  --radius-md:1.25rem;
+  --ease:cubic-bezier(.32,.72,0,1);
+}
+
+*{box-sizing:border-box}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+  min-height:100dvh;
+  font-family:"Plus Jakarta Sans","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(224,122,31,.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(224,122,31,.08), transparent 55%),
+    var(--paper);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 1rem 3rem;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+p{line-height:1.5;margin:0}
+h2,h3{margin:0}
+a{text-decoration:none;color:inherit;-webkit-user-select:none;user-select:none}
+button{font-family:inherit}
+
+.icon{width:1.5rem;height:1.5rem;flex:none}
+
+/* ---------- The Card Shell (Double-Bezel) ---------- */
+.card{
+  position:relative;
+  width:100%;
+  max-width:26rem;
+  background:var(--card);
+  border-radius:var(--radius-lg);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 30px 60px -30px rgba(28,26,23,.28),
+    0 8px 24px -12px rgba(28,26,23,.12);
+  overflow:hidden;
+  animation:cardIn 1s var(--ease) both;
+}
+
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(24px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* ---------- Header ---------- */
+header{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(75% 95% at 50% -8%, rgba(224,122,31,.50), rgba(224,122,31,0) 55%),
+    radial-gradient(60% 70% at 100% 0%, rgba(224,122,31,.14), transparent 60%),
+    linear-gradient(175deg, #1c1813 0%, #12100c 100%);
+  padding:1.25rem 1.25rem 0;
+}
+
+#topActions{
+  display:flex;
+  flex-direction:row-reverse;
+  justify-content:space-between;
+  align-items:flex-start;
+  position:relative;
+  z-index:2;
+}
+#topActions>div{display:flex;gap:.25rem}
+#topActions a{
+  padding:.6rem;
+  cursor:pointer;
+  line-height:0;
+  border-radius:50%;
+  color:rgba(250,247,242,.72);
+  transition:background .4s var(--ease), transform .4s var(--ease), color .4s var(--ease);
+}
+#topActions a:hover{background:rgba(250,247,242,.12);color:#faf7f2;transform:translateY(-1px)}
+#topActions .icon{color:inherit}
+
+.headerImgC{
+  display:grid;
+  grid-template-columns:auto;
+  grid-template-rows:auto;
+  overflow:hidden;
+  margin-top:.5rem;
+}
+#logo{
+  grid-column:1;grid-row:1;
+  align-self:center;justify-self:center;
+  max-height:4.75rem;
+  width:auto;
+  margin:2.25rem 0 4.25rem;
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,.4));
+  pointer-events:none;
+  user-select:none;
+}
+
+/* ---------- Main / Profile ---------- */
+main{
+  position:relative;
+  padding:0 1.5rem 2.5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+#profilePhoto{
+  width:7.5rem;
+  height:7.5rem;
+  border-radius:50%;
+  object-fit:cover;
+  margin-top:-3.75rem;
+  border:4px solid var(--card);
+  box-shadow:0 12px 28px -12px rgba(28,26,23,.35);
+  pointer-events:none;
+  user-select:none;
+  position:relative;
+  z-index:3;
+}
+
+#info{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:1.1rem;
+  line-height:1.3;
+  word-break:break-word;
+}
+
+.name{
+  font-family:"Fraunces","Iowan Old Style","Times New Roman",serif;
+  font-weight:600;
+  font-size:2rem;
+  letter-spacing:-.02em;
+  margin:0;
+  color:var(--ink);
+}
+
+.jobtitle{
+  margin-top:.35rem;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.bizname{
+  margin-top:.6rem;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--ink);
+}
+
+.bizaddr{
+  margin-top:.2rem;
+  font-size:.85rem;
+  color:var(--ink-soft);
+}
+
+.sub{
+  margin-top:.9rem;
+  font-size:.9rem;
+  color:var(--ink-soft);
+  white-space:pre-line;
+  line-height:1.5;
+}
+
+/* ---------- CTA ---------- */
+#cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  width:100%;
+  margin-top:1.75rem;
+  padding:1rem 1.5rem;
+  border-radius:5rem;
+  background:var(--ink);
+  color:#faf7f2;
+  font-weight:600;
+  font-size:.95rem;
+  cursor:pointer;
+  line-height:1;
+  box-shadow:0 14px 30px -14px rgba(28,26,23,.5);
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
+}
+#cta:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(28,26,23,.55)}
+#cta:active{transform:scale(.985)}
+#cta .icon{color:#faf7f2}
+#cta p{margin:0}
+
+/* ---------- Action buttons ---------- */
+.actions{
+  width:100%;
+  margin-top:1.5rem;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.5rem;
+}
+.actionsC{width:auto}
+.actionBtn{
+  padding:.4rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.actionBtn a{
+  border-radius:50%;
+  padding:1rem;
+  line-height:0;
+  background:var(--accent-soft);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .45s var(--ease), background .45s var(--ease), color .45s var(--ease), box-shadow .45s var(--ease);
+}
+.actionBtn a:hover{
+  transform:translateY(-3px);
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 14px 26px -12px rgba(224,122,31,.55);
+}
+.actionBtn a:active{transform:scale(.94)}
+.actionBtn .icon{color:inherit}
+.actionBtn p{
+  margin:.6rem 0 0;
+  font-size:.82rem;
+  font-weight:500;
+  color:var(--ink-soft);
+}
+
+.actions.secondary{margin-top:.25rem}
+
+/* ---------- Modal ---------- */
+#modal{
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  z-index:10;
+  width:100%;
+  bottom:0;
+  left:0;
+  background:var(--card);
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow:0 -20px 60px -20px rgba(28,26,23,.35);
+  padding:1rem 1.5rem 2rem;
+  transition:transform .45s var(--ease), opacity .3s ease;
+  transform:translateY(100%);
+  opacity:0;
+  visibility:hidden;
+}
+#modal.open{
+  transform:translateY(0);
+  opacity:1;
+  visibility:visible;
+}
+#close{
+  align-self:flex-end;
+  padding:.5rem;
+  cursor:pointer;
+  line-height:0;
+  border-radius:50%;
+  color:var(--ink);
+  transition:background .3s var(--ease);
+}
+#close:hover{background:rgba(28,26,23,.06)}
+#close .icon{color:var(--ink)}
+
+#keyView,#copyView,#qrView{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:0 .5rem;
+  text-align:center;
+}
+#keyView p,#copyView p,#qrView p{margin:1rem 0;text-align:center;color:var(--ink-soft)}
+#copyURL,#dlKey{
+  display:flex;
+  width:100%;
+  align-items:center;
+  justify-content:center;
+  gap:.5rem;
+  border-radius:5rem;
+  padding:1rem 1.5rem;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  box-sizing:border-box;
+  background:var(--ink);
+  color:#faf7f2;
+  font-weight:600;
+  font-size:.95rem;
+  transition:transform .4s var(--ease), background .4s var(--ease);
+}
+#copyURL:hover,#dlKey:hover{transform:translateY(-2px)}
+#copyURL .icon,#dlKey .icon{color:#faf7f2}
+#copyURL span,#dlKey span{color:#faf7f2}
+#qrView h3{margin:1rem 0 0;font-family:"Fraunces",serif;font-weight:600;font-size:1.3rem;color:var(--ink)}
+#qrView p{margin:.4rem 0 0}
+#qr{
+  margin:1rem 0;
+  padding:1.25rem;
+  background:#fff;
+  border-radius:1rem;
+  box-shadow:0 10px 30px -14px rgba(28,26,23,.25);
+}
+
+/* ---------- Footer ---------- */
+footer{
+  padding:2.5rem 1rem 0;
+  font-size:.8rem;
+  text-align:center;
+  color:var(--ink-faint);
+}
+footer a{text-decoration:underline;color:inherit}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:480px){
+  body{padding:1rem .75rem 2rem}
+  main{padding:0 1.25rem 2rem}
+  .name{font-size:1.7rem}
+}
