@@ -108,12 +108,23 @@ header{
   overflow:hidden;
   margin-top:.5rem;
 }
-#logo{
+#logoLink{
   grid-column:1;grid-row:1;
   align-self:center;justify-self:center;
+  display:block;
+  line-height:0;
+  margin:2.25rem 0 4.25rem;
+  border-radius:1rem;
+  transition:transform .5s var(--ease), opacity .5s var(--ease);
+}
+#logoLink:hover{transform:scale(1.03);opacity:.92}
+#logoLink:active{transform:scale(.99)}
+#logoLink:focus-visible{outline:2px solid rgba(250,247,242,.6);outline-offset:6px}
+
+#logo{
+  display:block;
   max-height:4.75rem;
   width:auto;
-  margin:2.25rem 0 4.25rem;
   filter:drop-shadow(0 4px 20px rgba(0,0,0,.4));
   pointer-events:none;
   user-select:none;
@@ -184,12 +195,19 @@ main{
 }
 
 .sub{
+  display:inline-block;
   margin-top:.9rem;
   font-size:.9rem;
   color:var(--ink-soft);
   white-space:pre-line;
   line-height:1.5;
+  text-decoration:underline;
+  text-decoration-color:rgba(107,101,92,.35);
+  text-underline-offset:3px;
+  transition:color .4s var(--ease), text-decoration-color .4s var(--ease);
 }
+.sub:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.sub:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:.25rem}
 
 /* ---------- CTA ---------- */
 #cta{
